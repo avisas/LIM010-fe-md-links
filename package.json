@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/avisas/LIM010-fe-md-links/issues"
   },
-  "homepage": "https://github.com/avisas/LIM010-fe-md-links#readme"
+  "homepage": "https://github.com/avisas/LIM010-fe-md-links#readme",
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "jest": "^24.9.0"
+  }
 }
