@@ -5,14 +5,14 @@
   "main": "app.js",
   "scripts": {
     "build": "babel src -d lib",
-    "test": "jest --coverage" 
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/avisas/LIM010-fe-md-links.git"
   },
   "keywords": [
-    "javascript", 
+    "javascript",
     "node.js",
     "path"
   ],
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/avisas/LIM010-fe-md-links#readme",
   "devDependencies": {
     "eslint": "^6.5.1",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "mock-fs": "^4.10.1"
   }
 }
