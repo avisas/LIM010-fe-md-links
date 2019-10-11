@@ -21,31 +21,35 @@ beforeEach(() => { mock(fileStructure); });
 afterAll(() => { mock.restore(); });
 
 describe('dirExist', () => {
-  it('el directorio existe', () => {
+  it('debería retornar true si el directorio existe', () => {
     expect().toBe();
   })
+
+  it('debería retornar false si el directorio no existe', () => {
+    expect().toBe();
+  });
 });
 
 describe('getFilePaths', () => {
-  it('obtener la ruta de todos los archivos', () => {
+  it('debería obtener un array con la ruta de todos los archivos', () => {
     expect().toBe();
   });
 });
 
 describe('allMarkdownFiles', () => {
-  it('extrae todos los archivos markdown dentro de cada directorio', () => {
+  it('debería extraer en un array todos los archivos markdown dentro de cada directorio', () => {
     expect().toBe();
   });
 });
 
 describe('allMarkdownLinks', () => {
-  it('extrae todos los links de cada archivo markdown', () => {
+  it('debería extraer todos los links de cada archivo markdown', () => {
     expect().toBe();
   });
 });
 
 describe('allMarkdownLinks', () => {
-  it('extrae todos los links de cada archivo markdown', () => {
+  it('debería extraer todos los links de cada archivo markdown', () => {
     expect().toBe();
   });
 });

@@ -1,7 +1,6 @@
 const path = require('path');
 const fs = require('fs');
 const marked = require('marked');
-const mock = require('mock-fs');
 
 export const mdLinks = (thePath, options) => {
     let newPath = thePath;
