@@ -2,16 +2,16 @@
 
 ## Preámbulo
 
-[Markdown](https://es.wikipedia.org/wiki/Markdown) 
 El siguiente proyecto fue hecho con la finalidad de crear una librería que use Node.js capaz 
-de leer, analizar y verificar links dentro de archivos en formato [.md] de una ruta específica y 
-de esa forma reportar ciertas estadísticas.
+de leer, analizar y verificar links dentro de archivos en formato ".md" de una ruta específica y 
+de esa forma reportar estadísticas.
 
-- 
+Antes de que pueda empezar a utilizar la librería, dejo el diagrama de flujo que muestra los pasos que realicé para crear esta librería y el backlog o la planificacion del proyecto.
 
-![md-links](https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg)
+- [Diagrama de flujo del proyecto](https://github.com/avisas/LIM010-fe-md-links/blob/master/img/diagrama%20de%20flujo.png) 
+- [Planificación del proyecto](https://github.com/avisas/LIM010-fe-md-links/projects/1)
 
-## Introducción
+## Guia de uso e Instalacion de la librería 
 
 [Node.js](https://nodejs.org/es/) es un entorno de ejecución para JavaScript
 construido con el [motor de JavaScript V8 de Chrome](https://developers.google.com/v8/).
