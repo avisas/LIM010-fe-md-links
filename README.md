@@ -2,7 +2,7 @@
 
 ## Preámbulo
 
-[Markdown](https://es.wikipedia.org/wiki/Markdown) 
+[Diagrama de flujo del proyecto](https://github.com/avisas/LIM010-fe-md-links/blob/master/img/diagrama%20de%20flujo.png) 
 El siguiente proyecto fue hecho con la finalidad de crear una librería que use Node.js capaz 
 de leer, analizar y verificar links dentro de archivos en formato [.md] de una ruta específica y 
 de esa forma reportar ciertas estadísticas.
