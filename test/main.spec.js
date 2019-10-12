@@ -20,7 +20,7 @@ const fileStructure = {
 beforeEach(() => { mock(fileStructure); });
 afterAll(() => { mock.restore(); });
 
-describe('dirExist', () => {
+describe('validateDirectory', () => {
   it('debería retornar true si el directorio existe', () => {
     expect().toBe();
   })
