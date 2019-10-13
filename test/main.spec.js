@@ -1,3 +1,6 @@
+
+
+
 const mock = require('mock-fs');
 
 const fileStructure = {
@@ -30,7 +33,7 @@ describe('validateDirectory', () => {
   });
 });
 
-describe('getFilePaths', () => {
+describe('getListOfURLs', () => {
   it('debería obtener un array con la ruta de todos los archivos', () => {
     expect().toBe();
   });
