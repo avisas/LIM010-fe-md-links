@@ -8,7 +8,7 @@ de esa forma reportar estadísticas.
 
 Antes de que pueda empezar a utilizar la librería, dejo el diagrama de flujo que muestra los pasos que realicé para crear esta librería y el backlog o la planificacion del proyecto.
 
-- [Diagrama de flujo del proyecto]() 
+- [Diagrama de flujo del proyecto](https://github.com/avisas/LIM010-fe-md-links/blob/master/img/diagrama%20de%20flujo.png) 
 - [Planificación del proyecto](https://github.com/avisas/LIM010-fe-md-links/projects/1)
 
 ## Guia de uso e Instalacion de la librería 
