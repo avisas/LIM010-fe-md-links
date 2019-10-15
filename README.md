@@ -42,7 +42,7 @@ La función debe retornar una promesa (Promise) que resuelva un arreglo de objet
 
 **Ejemplo**
 
-Importe avisas@mdlinks desde su proyecto.
+Importe **avisas@mdlinks** desde su proyecto.
 
 ```javascript
 const fn = require('avisas@mdlinks');
@@ -54,79 +54,16 @@ Para validación de los links:
 (screenshot)
 
 
-## CLI
+## CLI (Command Line Interface - Interfaz de Línea de Comando)
 
 **Uso de comandos**
 
+md-links <path-to-file> [options]
+ 
 - El ejecutable implementa `--validate`.
 - El ejecutable implementa `--stats`.
 - El ejecutable implementa `--validate` y `--stats` juntos.
 
-
-
-Antes de comenzar a codear, es necesario que pensemos en la arquitectura y
-boilerplate del proyecto, por lo que `antes de que empieces tu planificacion
-y a trabajar en la funcionalidad de tu proyecto deberás de haber
-creado tu boilerplate y tus tests`. Esto debería quedar
-detallado en tu repo y haberte asegurado de haber recibido feedback de uno
-de tus coaches. Una vez hayas terminado de definir la arquitectura y los tests
-de tu proyecto estarás lista para iniciar con tu **planificacion** por lo cual
-deberas de hacer uso de una serie de _issues_ y _milestones_ para priorizar
-tus tareas y crear un _project_ para organizar el trabajo y poder hacer
-seguimiento de tu progreso.
-
-Dentro de cada _milestone_ se crearán y asignarán los _issues_ que cada quien
-considere necesarios.
-
-### JavaScript API
-
-El módulo debe poder importarse en otros scripts de Node.js y debe ofrecer la
-siguiente interfaz:
-
-#### `mdLinks(path, options)`
-
-##### Argumentos
-
-- `path`: Ruta absoluta o relativa al archivo o directorio. Si la ruta pasada es
-  relativa, debe resolverse como relativa al directorio desde donde se invoca
-  node - _current working directory_).
-- `options`: Un objeto con las siguientes propiedades:
-  * `validate`: Booleano que determina si se desea validar los links
-    encontrados.
-
-##### Valor de retorno
-
-La función debe retornar una promesa (`Promise`) que resuelva a un arreglo
-(`Array`) de objetos (`Object`), donde cada objeto representa un link y contiene
-las siguientes propiedades:
-
-- `href`: URL encontrada.
-- `text`: Texto que aparecía dentro del link (`<a>`).
-- `file`: Ruta del archivo donde se encontró el link.
-
-#### Ejemplo
-
-```js
-const mdLinks = require("md-links");
-
-mdLinks("./some/example.md")
-  .then(links => {
-    // => [{ href, text, file }]
-  })
-  .catch(console.error);
-
-mdLinks("./some/example.md", { validate: true })
-  .then(links => {
-    // => [{ href, text, file, status, ok }]
-  })
-  .catch(console.error);
-
-mdLinks("./some/dir")
-  .then(links => {
-    // => [{ href, text, file }]
-  })
-  .catch(console.error);
-```
 
 ### CLI (Command Line Interface - Interfaz de Línea de Comando)
 
@@ -135,7 +72,7 @@ manera a través de la terminal:
 
 `md-links <path-to-file> [options]`
 
-Por ejemplo:
+**Por ejemplo:**
 
 ```sh
 $ md-links ./some/example.md
@@ -144,17 +81,17 @@ $ md-links ./some/example.md
 ./some/example.md http://google.com/ Google
 ```
 
-El comportamiento por defecto no debe validar si las URLs responden ok o no,
-solo debe identificar el archivo markdown (a partir de la ruta que recibe como
-argumento), analizar el archivo Markdown e imprimir los links que vaya
-encontrando, junto con la ruta del archivo donde aparece y el texto
+Con este comportamiento solo debe identificar el archivo markdown 
+(a partir de la ruta que recibe como argumento), analizar
+el archivo Markdown e imprimir los links que vaya encontrando, 
+junto con la ruta del archivo donde aparece y el texto
 que hay dentro del link (truncado a 50 caracteres).
 
 #### Options
 
-##### `--validate`
+##### comando `--validate`
 
-Si pasamos la opción `--validate`, el módulo debe hacer una petición HTTP para
+En esta opción, el módulo debe hacer una petición HTTP para
 averiguar si el link funciona o no. Si el link resulta en una redirección a una
 URL que responde ok, entonces consideraremos el link como ok.
 
@@ -171,9 +108,9 @@ Vemos que el _output_ en este caso incluye la palabra `ok` o `fail` después de
 la URL, así como el status de la respuesta recibida a la petición HTTP a dicha
 URL.
 
-##### `--stats`
+##### comando `--stats`
 
-Si pasamos la opción `--stats` el output (salida) será un texto con estadísticas
+En esta opción, el output (salida) será un texto con estadísticas
 básicas sobre los links.
 
 ```sh
@@ -182,8 +119,9 @@ Total: 3
 Unique: 3
 ```
 
-También podemos combinar `--stats` y `--validate` para obtener estadísticas que
-necesiten de los resultados de la validación.
+##### comando `--stats` `--validate`
+
+En esta opción, se obtienen las estadísticas que necesiten de los resultados de la validación.
 
 ```sh
 $ md-links ./some/example.md --stats --validate
@@ -191,12 +129,7 @@ Total: 3
 Unique: 3
 Broken: 1
 ```
-
-## Entregables
-
-Módulo instalable via `npm install <github-user>/md-links`. Este módulo debe
-incluir tanto un ejecutable como una interfaz que podamos importar con `require`
-para usarlo programáticamente.
+- - - 
 
 ## Objetivos de aprendizaje
 
@@ -235,9 +168,6 @@ pendientes de tu proyecto anterior.
 
 ***
 
-## Pistas / Tips
-
-### FAQs
 
 #### ¿Cómo hago para que mi módulo sea _instalable_ desde GitHub?
 
