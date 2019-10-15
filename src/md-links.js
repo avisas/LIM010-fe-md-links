@@ -1,6 +1,4 @@
 const path = require('path');
-const fs = require('fs');
-const marked = require('marked');
 
 export const mdLinks = (thePath, options) => {
   let newPath = thePath;

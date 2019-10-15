@@ -1,4 +1,5 @@
-import { validateDirectory } from '../lib/val-links.js';
+import { validateDirectory, getFilePaths, readAllMarkdownFiles } from '../src/files-path.js';
+import { pathsFromAllFiles, mdFiles } from './file-structure.js';
 
 const mock = require('mock-fs');
 
@@ -39,17 +40,17 @@ describe('validateDirectory', () => {
   });
 });
 
-// describe('getListOfURLs', () => {
-//   it('debería obtener un array con la ruta de todos los archivos', () => {
-//     expect().toBe();
-//   });
-// });
+describe('getFilePaths', () => {
+  it('debería obtener recursivamente en un array las rutas de todos los archivos', () => {
+    expect(getFilePaths('path/to/fake/dir')).toStrictEqual(pathsFromAllFiles);
+  });
+});
 
-// describe('allMarkdownFiles', () => {
-//   it('debería extraer en un array todos los archivos markdown dentro de cada directorio', () => {
-//     expect().toBe();
-//   });
-// });
+describe('readAllMarkdownFiles', () => {
+  it('debería extraer en un array todos los archivos markdown dentro de cada directorio', () => {
+    expect(readAllMarkdownFiles(pathsFromAllFiles)).toStrictEqual(mdFiles);
+  });
+});
 
 // describe('allMarkdownLinks', () => {
 //   it('debería extraer todos los links de cada archivo markdown', () => {

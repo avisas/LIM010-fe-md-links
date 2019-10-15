@@ -4,14 +4,14 @@ const fetch = require('node-fetch');
 
 const getListOfURLs = (strContentOfFile) => {
   const regexNameURL = /\[.*\]\(http.+\)/gm;
-  return strContentOfFile.match(regexNameURL);  // array of strings
+  return strContentOfFile.match(regexNameURL); // array of strings
 };
 
 const getURLFinalObject = (absPath, strNameAndURL) => {
   let name = strNameAndURL.match(/\[.*\]/gm); // ['[pepito5]']
   name = name[0].slice(1, -1); // retorna name puro.
   let url = strNameAndURL.match(/\(http.+\)/gm); // ['(http://wb.com)']
-  url = url[0].slice(1, -1); // retorna url puro. 
+  url = url[0].slice(1, -1); // retorna url puro.
   const { status, codeStatus } = validateURL(url);
   return {
     name, url, absPath, status, codeStatus,
