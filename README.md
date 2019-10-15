@@ -11,13 +11,13 @@ Antes de que pueda empezar a utilizar la librería, dejo el diagrama de flujo qu
 
 ## Guia de uso e Instalacion de la librería 
 
-* #Instalación
+* ## Instalación
 
 Para comenzar a usar este proyecto, escriba en la terminal lo siguiente:
 
 `npm i @avisas/md-links`
 
-* #Uso
+* ## Uso
 
 
 ## Objetivos
