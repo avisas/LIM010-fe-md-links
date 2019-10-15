@@ -25,12 +25,18 @@
   },
   "homepage": "https://github.com/avisas/LIM010-fe-md-links#readme",
   "devDependencies": {
-    "eslint": "^6.5.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-install": "2.1.0",
+    "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.19.0",
     "jest": "^24.9.0",
     "mock-fs": "^4.10.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@babel/polyfill": "^7.6.0"
+  }
 }

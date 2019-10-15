@@ -1,18 +1,24 @@
-
-
+import { validateDirectory } from '../lib/val-links.js';
 
 const mock = require('mock-fs');
 
 const fileStructure = {
   'path/to/fake/dir': {
     'some-file.txt': 'file content here',
-    'some-file.md': 'some content here with the link only for firebase [Firestore](https://firebase.google.com/docs/firestore) ',
-    fakedir2: {
+    'some-file.md': `'some content here with the link only for firebase 
+    [Firestore](https://firebase.google.com/docs/firestore)'`,
+    firstPathfile: {
       'some-file2.txt': 'file content here2',
-      'some-file2.md': 'some other content with several links [mobile](https://user-images.githubusercontent.com/32286663/56174616-ec9f6100-5fb8-11e9-9edb-d5ef7c251d9c.png)[desktop](https://user-images.githubusercontent.com/32286663/56174626-fcb74080-5fb8-11e9-8854-26e8d9c4e25f.png)[_mobile first_](https://www.mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/)',
-      fakedir3: {
+      'some-file2.md': `'some other content with several links
+      [medium](https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d)
+      [markdown](https://joedicastro.com/pages/markdown.html)
+      [RegExp](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/RegExp)'`,
+      SecondPathFile: {
         'some-file3.txt': 'file content here3',
-        'some-file3.md': 'some other content with several links [mobile](https://user-images.githubusercontent.com/32286663/56174616-ec9f6100-5fb8-11e9-9edb-d5ef7c251d9c.png)[desktop](https://user-images.githubusercontent.com/32286663/56174626-fcb74080-5fb8-11e9-8854-26e8d9c4e25f.png)[_mobile first_](https://www.mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/no)',
+        'some-file3.md': `'some other content with several links 
+        [medium](https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d)
+        [markdown](https://joedicastro.com/pages/markdown.html)
+        [RegExp](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/RegExp/wrongurl)'`,
       },
     },
   },
@@ -25,34 +31,38 @@ afterAll(() => { mock.restore(); });
 
 describe('validateDirectory', () => {
   it('debería retornar true si el directorio existe', () => {
-    expect().toBe();
-  })
+    expect(validateDirectory('path/to/fake/dir')).toBe(true);
+  });
 
   it('debería retornar false si el directorio no existe', () => {
-    expect().toBe();
+    expect(validateDirectory('path/to/fake/dirfake')).toBe(false);
   });
 });
 
-describe('getListOfURLs', () => {
-  it('debería obtener un array con la ruta de todos los archivos', () => {
-    expect().toBe();
-  });
-});
+// describe('getListOfURLs', () => {
+//   it('debería obtener un array con la ruta de todos los archivos', () => {
+//     expect().toBe();
+//   });
+// });
 
-describe('allMarkdownFiles', () => {
-  it('debería extraer en un array todos los archivos markdown dentro de cada directorio', () => {
-    expect().toBe();
-  });
-});
+// describe('allMarkdownFiles', () => {
+//   it('debería extraer en un array todos los archivos markdown dentro de cada directorio', () => {
+//     expect().toBe();
+//   });
+// });
 
-describe('allMarkdownLinks', () => {
-  it('debería extraer todos los links de cada archivo markdown', () => {
-    expect().toBe();
-  });
-});
+// describe('allMarkdownLinks', () => {
+//   it('debería extraer todos los links de cada archivo markdown', () => {
+//     expect().toBe();
+//   });
+// });
 
-describe('allMarkdownLinks', () => {
-  it('debería extraer todos los links de cada archivo markdown', () => {
-    expect().toBe();
-  });
-});
+// describe('validateURL', () => {
+//   it('debería validar todos los links de cada URL', (done) => {
+//     validateURL()
+//       .then((data) => {
+//         expect(data).toStrictEqual();
+//         done();
+//       });
+//   });
+// });
