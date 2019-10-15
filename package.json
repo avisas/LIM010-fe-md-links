@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/avisas/LIM010-fe-md-links#readme",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-install": "2.1.0",

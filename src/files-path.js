@@ -23,7 +23,7 @@ export const getFilePaths = (dir) => {
       : dirfilelist.concat(path.join(dir, file));
     fileList = fileslist.concat(dirfilelist);
   });
-  return [...new Set(fileList)];
+  return new Set(fileList);
 };
 
 export const readAllMarkdownFiles = (filePathList) => {
