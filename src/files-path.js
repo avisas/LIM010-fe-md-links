@@ -35,3 +35,15 @@ export const readAllMarkdownFiles = (filePathList) => {
   });
   return markdownFiles;
 };
+
+export const extractLinksFromMdFiles = (paths) => {
+  let linksOfMdFiles = [];
+  if (validateDirectory(paths)) {
+    const allFilesPaths = getFilePaths(paths);
+    const markdownFiles = readAllMarkdownFiles(allFilesPaths);
+    linksOfMdFiles = extractLinks(markdownFiles); // falta crear función
+  } else {
+    linksOfMdFiles = 'No existe el directorio especificado';
+  }
+  return linksOfMdFiles;
+};
