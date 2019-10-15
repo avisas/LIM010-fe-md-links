@@ -4,7 +4,8 @@ El siguiente proyecto fue hecho con la finalidad de crear una librería que use 
 de leer, analizar y verificar links dentro de archivos en formato ".md" de una ruta específica y 
 de esa forma reportar estadísticas.
 
-Antes de que pueda empezar a utilizar la librería, dejo el diagrama de flujo que muestra los pasos que realicé para crear esta librería y el backlog o la planificacion del proyecto.
+Antes de que empiece a utilizar la librería, dejo el diagrama de flujo que muestra los pasos 
+que realicé para crear esta librería y el backlog o la planificación del proyecto.
 
 - [Diagrama de flujo del proyecto](https://github.com/avisas/LIM010-fe-md-links/blob/master/img/diagrama%20de%20flujo.png) 
 - [Planificación del proyecto](https://github.com/avisas/LIM010-fe-md-links/projects/1)
@@ -19,82 +20,47 @@ Para comenzar a usar este proyecto, escriba en la terminal lo siguiente:
 
 * ## Uso
 
+Javascript API
+Este modulo debe exportar un función con la interfaz API esperada y debe poder importarse 
+en otros scripts de Node.js con la siguiente interfaz:
 
-## Objetivos
+`**mdLinks(path, opts)**`
 
-El objetivo práctico de este proyecto es que aprendas cómo crear tu propia
-**librería** (o biblioteca - _library_) en JavaScript.
+**Argumentos:**
 
-Diseñar tu propia librería es una experiencia fundamental para cualquier
-desarrollador porque que te obliga a pensar en la interfaz (API) de tus
-_módulos_ y cómo será usado por otros developers. Debes tener especial
-consideración en peculiaridades del lenguaje, convenciones y buenas prácticas.
+* `path:` Ruta absoluta o relativa al archivo o directorio.
+* `options:` Un objeto con las siguientes propiedades:
+  * validate: Booleano que determina si se desea validar los links encontrados.
 
-Tópicos: [Node.js](https://nodejs.org/en/),
-[módulos (CommonJS)](https://nodejs.org/docs/latest-v0.10.x/api/modules.html),
-[file system](https://nodejs.org/api/fs.html),
-[path](https://nodejs.org/api/path.html),
-[http.get](https://nodejs.org/api/http.html#http_http_get_options_callback),
-parsing,
-[markdown](https://daringfireball.net/projects/markdown/syntax), CLI,
-[npm-scripts](https://docs.npmjs.com/misc/scripts),
-[semver](https://semver.org/), ...
+**Valor de retorno:**
 
-## Consideraciones generales
+La función debe retornar una promesa (Promise) que resuelva un arreglo de objetos donde cada objeto representa un link que contiene las siguientes propiedades:
 
-- Este proyecto se debe "resolver" de manera individual.
+* href: URL encontrada.
+* text: Texto que aparecía dentro del link (<a>).
+* file: Ruta del archivo donde se encontró el link.
 
-- La librería debe estar implementada en JavaScript para ser ejecutada con
-Node.js. **Está permitido usar librerías externas**.
+**Ejemplo**
 
-- Tu módulo debe ser instalable via `npm install <github-user>/md-links`. Este
-módulo debe incluir tanto un _ejecutable_ que podamos invocar en la línea de
-comando como una interfaz que podamos importar con `require` para usarlo
-programáticamente.
+Importe avisas@mdlinks desde su proyecto.
 
-- Los tests unitarios deben **cubrir un mínimo del 70% de _statements_, _functions_,
-_lines_ y _branches_.**, ademas de pasar los test y el linter. Te recomendamos 
-utilizar [Jest](https://jestjs.io/) para tus pruebas unitarias.
+const fn = require('avisas@mdlinks');
 
-- Para este proyecto no está permitido utilizar `async/await`.
+Para validación de los links:
 
-- Para este proyecto es opcional el uso de ES Modules `(import/export)`, en el
-caso optes utilizarlo deberas de crear un script de `build` en el `package.json`
-que transforme el código ES6+ a ES5 con ayuda de babel.
+( aquí va la validación---- )
+(screenshot)
 
-## Criterios de aceptacion
 
-Estos son los criterios de lo que debe ocurrir para que se satisfagan 
-las necesidades del usuario:
+## CLI
 
-- Instalar la libreria via `npm install --global <github-user>/md-links`
+**Uso de comandos**
 
-### `README.md`
-
-- Encontrar el *pseudo codigo* o *diagrama de flujo* con el algoritmo que
-  soluciona el problema.
-- Encontrar un board con el backlog para la implementación de la librería.
-- Encontrar la documentación técnica de la librería.
-- Encontrar la Guía de uso e instalación de la librería.
-
-### API `mdLinks(path, opts)`
-
-- El módulo exporta una función con la interfaz (API) esperada.
-- El módulo implementa soporte para archivo individual
-- El módulo implementa soporte para directorios
-- El módulo implementa `options.validate`
-
-### CLI
-
-- Expone ejecutable `md-links` en el path (configurado en `package.json`)
-- Se ejecuta sin errores / output esperado.
 - El ejecutable implementa `--validate`.
 - El ejecutable implementa `--stats`.
 - El ejecutable implementa `--validate` y `--stats` juntos.
 
 
-Para comenzar este proyecto tendrás que hacer un _fork_ y _clonar_ este
-repositorio.
 
 Antes de comenzar a codear, es necesario que pensemos en la arquitectura y
 boilerplate del proyecto, por lo que `antes de que empieces tu planificacion
