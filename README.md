@@ -44,7 +44,9 @@ La función debe retornar una promesa (Promise) que resuelva un arreglo de objet
 
 Importe avisas@mdlinks desde su proyecto.
 
+```javascript
 const fn = require('avisas@mdlinks');
+```
 
 Para validación de los links:
 
