@@ -1,7 +1,5 @@
 # Markdown Links
-
-## Preámbulo
-
+- - -
 El siguiente proyecto fue hecho con la finalidad de crear una librería que use Node.js capaz 
 de leer, analizar y verificar links dentro de archivos en formato ".md" de una ruta específica y 
 de esa forma reportar estadísticas.
