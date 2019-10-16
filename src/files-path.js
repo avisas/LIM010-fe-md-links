@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
-export const validateDirectory = (dir) => {
+const validateDirectory = (dir) => {
   try {
     fs.accessSync(dir, fs.constants.F_OK);
     return true;
@@ -10,7 +10,15 @@ export const validateDirectory = (dir) => {
   }
 };
 
-export const getFilePaths = (dir) => {
+const getAbsolutePath = (thePath) => ((path.isAbsolute(thePath)) ? thePath : path.resolve(thePath);
+
+const isFile = (thePath) => fs.statSync(thePath).isFile();
+exports.isFile = isFile;
+
+const isMd = (file) => path.extname(file) === '.md'; // return a extension as a string.
+exports.isMd = isMd;
+
+const getFilePaths = (dir) => {
   let fileList = [];
   let dirfilelist = [];
   let fileslist = [];
@@ -26,7 +34,7 @@ export const getFilePaths = (dir) => {
   return new Set(fileList);
 };
 
-export const readAllMarkdownFiles = (filePathList) => {
+const findAllMarkdownFiles = (filePathList) => {
   const markdownFiles = [];
   filePathList.forEach((file) => {
     if (path.extname(file).toLowerCase() === '.md' || path.extname(file).toLowerCase() === '.markdown') {
@@ -36,14 +44,6 @@ export const readAllMarkdownFiles = (filePathList) => {
   return markdownFiles;
 };
 
-export const extractLinksFromMdFiles = (paths) => {
-  let linksOfMdFiles = [];
-  if (validateDirectory(paths)) {
-    const allFilesPaths = getFilePaths(paths);
-    const markdownFiles = readAllMarkdownFiles(allFilesPaths);
-    linksOfMdFiles = extractLinks(markdownFiles); // falta crear función
-  } else {
-    linksOfMdFiles = 'No existe el directorio especificado';
-  }
-  return linksOfMdFiles;
+export {
+  validateDirectory, getAbsolutePath, isFile, isMd, getFilePaths, findAllMarkdownFiles,
 };

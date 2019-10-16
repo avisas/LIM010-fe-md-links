@@ -1,5 +1,5 @@
-const path = require('path');
-const fs = require('fs');
+import { validateDirectory } from './files-path.js';
+
 const fetch = require('node-fetch');
 
 const getListOfURLs = (strContentOfFile) => {
@@ -18,18 +18,7 @@ const getURLFinalObject = (absPath, strNameAndURL) => {
   };
 };
 
-const getAbsolutePath = (thePath) => ((path.isAbsolute(thePath)) ? thePath : path.resolve(thePath));
-
-const isFile = (thePath) => fs.statSync(thePath).isFile();
-exports.isFile = isFile;
-
-const isDirectory = (thePath) => fs.statSync(thePath).isDirectory();
-exports.isDirectory = isDirectory;
-
-const isMd = (file) => path.extname(file) === '.md'; // return a extension as a string.
-exports.isMd = isMd;
-
-export const validateURL = (url) => {
+const validateURL = (url) => {
   let status = 'FAIL';
   let codeStatus = '404';
 
@@ -46,9 +35,25 @@ export const validateURL = (url) => {
 };
 
 const calculateStats = (listOfAllURLs) => {
-  let total = listOfAllURLs.length;
-  let unique = (new Set(listOfAllURLs.map((objUrl) => objUrl.url))).size;
-  let broken = listOfAllURLs.filter((objUrl) => objUrl.status !== 'OK');
+  const total = listOfAllURLs.length;
+  const unique = (new Set(listOfAllURLs.map((objUrl) => objUrl.url))).size;
+  const broken = listOfAllURLs.filter((objUrl) => objUrl.status !== 'OK');
 
   return { total, unique, broken };
+};
+
+const extractLinksFromMdFiles = (paths) => {
+  let linksOfMdFiles = [];
+  if (validateDirectory(paths)) {
+    // const allFilesPaths = getFilePaths(paths);
+    // const markdownFiles = readAllMarkdownFiles(allFilesPaths);
+    // linksOfMdFiles = extractLinks(markdownFiles); // falta crear función
+  } else {
+    linksOfMdFiles = 'No existe el directorio especificado';
+  }
+  return linksOfMdFiles;
+};
+
+export {
+  getListOfURLs, getURLFinalObject, validateURL, calculateStats, extractLinksFromMdFiles,
 };

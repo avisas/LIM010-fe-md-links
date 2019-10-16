@@ -1,4 +1,6 @@
-import { validateDirectory, getFilePaths, readAllMarkdownFiles } from '../src/files-path.js';
+import {
+  validateDirectory, getFilePaths, findAllMarkdownFiles, getAbsolutePath, isFile, isMd,
+} from '../src/files-path.js';
 import { pathsFromAllFiles, mdFiles } from './file-structure.js';
 
 const mock = require('mock-fs');
@@ -30,7 +32,34 @@ const fileStructure = {
 beforeEach(() => { mock(fileStructure); });
 afterAll(() => { mock.restore(); });
 
-describe('validateDirectory', () => {
+describe('Convert relative path to absolute path', () => {
+  it('debería convertir una ruta relativa a una ruta absoluta', () => {
+    expect(getAbsolutePath('path/to/fake/dir')).toBe('path/to/fake/dir');
+  });
+  it('debería retornar la misma ruta si es absoluta', () => {
+    expect(getAbsolutePath('path/to/fake/dir')).toBe('path/to/fake/dir');
+  });
+});
+
+describe('Is it a File?', () => {
+  it('debería retornar true si es un archivo', () => {
+    expect(isFile('path/to/fake/dir')).toBe(true);
+  });
+  it('debería retornar la misma ruta si es absoluta', () => {
+    expect(isFile('path/to/fake/dir')).toBe(false);
+  });
+});
+
+describe('Is it a markdown file?', () => {
+  it('Debería retornar true si la extensión del archivo es .md', () => {
+    expect(isMd('path/to/fake/dir/some-file.md')).toBe(true);
+  });
+  it('Debería retornar false si la extensión del archivo no es .md', () => {
+    expect(isMd('path/to/fake/dir/firstPathfile/some-file2.txt')).toBe(false);
+  });
+});
+
+describe('validate directory', () => {
   it('debería retornar true si el directorio existe', () => {
     expect(validateDirectory('path/to/fake/dir')).toBe(true);
   });
@@ -46,9 +75,9 @@ describe('getFilePaths', () => {
   });
 });
 
-describe('readAllMarkdownFiles', () => {
-  it('debería extraer en un array todos los archivos markdown dentro de cada directorio', () => {
-    expect(readAllMarkdownFiles(pathsFromAllFiles)).toStrictEqual(mdFiles);
+describe('Find all Markdown Files', () => {
+  it('debería extraer en un array todos los archivos markdown de cada directorio', () => {
+    expect(findAllMarkdownFiles(pathsFromAllFiles)).toStrictEqual(mdFiles);
   });
 });
 
