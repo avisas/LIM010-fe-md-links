@@ -10,7 +10,7 @@ const validateDirectory = (dir) => {
   }
 };
 
-const getAbsolutePath = (thePath) => ((path.isAbsolute(thePath)) ? thePath : path.resolve(thePath);
+const getAbsolutePath = (thePath) => ((path.isAbsolute(thePath)) ? thePath : path.resolve(thePath));
 
 const isFile = (thePath) => fs.statSync(thePath).isFile();
 exports.isFile = isFile;
