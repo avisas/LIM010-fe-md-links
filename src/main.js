@@ -1,4 +1,4 @@
-import { isFile } from "./files-path";
+import { isMdFile, isDirectory, getAbsolutePath } from "./files-path";
 
 const inputUserPath = 'c:/users/Alejandra/Downloads/myPath';
 const options = {
@@ -32,5 +32,6 @@ const getListOfURLProperties = (markdownFiles = []) => {
     return output;
 };
 
+export {main, updateListOfMarkdownFiles, getListOfURLProperties };
 
 

@@ -23,8 +23,6 @@ const isMdFile = (thePath) => {
 
 const isDirectory = (thePath) => fs.statSync(thePath).isDirectory();
 
-const isMd = (file) => path.extname(file) === '.md'; // return a extension as a string.
-
 const getFilePaths = (dir) => {
   let fileList = [];
   let dirfilelist = [];
@@ -52,5 +50,5 @@ const findAllMarkdownFiles = (filePathList) => {
 };
 
 export {
-  directoryExists, getAbsolutePath, isFile, isDirectory, isMd, getFilePaths, findAllMarkdownFiles,
+  directoryExists, getAbsolutePath, isDirectory, isMdFile, getFilePaths, findAllMarkdownFiles,
 };
