@@ -1,5 +1,6 @@
 import { isMdFile, isDirectory, getAbsolutePath } from "./files-path";
 
+const fs = require('fs');
 const inputUserPath = 'c:/users/Alejandra/Downloads/myPath';
 const options = {
   stats: false,
