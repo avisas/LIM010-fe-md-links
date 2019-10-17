@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const validateDirectory = (dir) => {
+const directoryExists = (dir) => {
   try {
     fs.accessSync(dir, fs.constants.F_OK);
     return true;
@@ -12,11 +12,18 @@ const validateDirectory = (dir) => {
 
 const getAbsolutePath = (thePath) => ((path.isAbsolute(thePath)) ? thePath : path.resolve(thePath));
 
-const isFile = (thePath) => fs.statSync(thePath).isFile();
-exports.isFile = isFile;
+const isMdFile = (thePath) => {
+  if (fs.statSync(thePath).isFile()) {
+    if (path.extname(thePath) === '.md') {
+      return true;
+    };
+  };
+  return false;
+};
+
+const isDirectory = (thePath) => fs.statSync(thePath).isDirectory();
 
 const isMd = (file) => path.extname(file) === '.md'; // return a extension as a string.
-exports.isMd = isMd;
 
 const getFilePaths = (dir) => {
   let fileList = [];
@@ -45,5 +52,5 @@ const findAllMarkdownFiles = (filePathList) => {
 };
 
 export {
-  validateDirectory, getAbsolutePath, isFile, isMd, getFilePaths, findAllMarkdownFiles,
+  directoryExists, getAbsolutePath, isFile, isDirectory, isMd, getFilePaths, findAllMarkdownFiles,
 };

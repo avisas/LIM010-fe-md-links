@@ -1,4 +1,4 @@
-import { validateDirectory } from './files-path.js';
+import { directoryExists } from './files-path.js';
 
 const fetch = require('node-fetch');
 
