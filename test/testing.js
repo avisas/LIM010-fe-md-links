@@ -21,8 +21,7 @@ console.log(rootPath);
 fs.readdir(rootPath, function (err, items) {
     console.log(items);
     for (var i = 0; i < items.length; i++) {
-        console.log(`item: ${items[i]}, abspath: ${getAbsolutePath(items[i])}, isdirectory: ${isDirectory(items[i])}, ismdFile: ${isMdFile(items[i])}`);
-        //console.log(`${items[i]} `);
+        console.log(`item: ${items[i]}, isdirectory: ${isDirectory(path.join(rootPath,items[i]))}, ismdFile: ${isMdFile(path.join(rootPath,items[i]))}`);
     }
 });
 
