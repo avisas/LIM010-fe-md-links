@@ -1,5 +1,6 @@
 import { isMdFile, isDirectory, getAbsolutePath } from "./files-path";
 
+const fs = require('fs');
 const inputUserPath = 'c:/users/Alejandra/Downloads/myPath';
 const options = {
   stats: false,
@@ -16,7 +17,7 @@ const main = (inputUserPath, options) => {
 const updateListOfMarkdownFiles = (listOfMarkdownFiles = [], path = '') => {
   if (isMdFile(path)) {
     listOfMarkdownFiles.push(getAbsolutePath(path));
-  } else if (isDirectory(path)) {
+  } else if (isDirectory(path)) {    
     path.forEachFile(childPath => updateListOfMarkdownFiles(listOfMarkdownFiles, childPath));
   }; // si es un directory, ahora listar todos sus archivos o carpetas hijo.
 };
