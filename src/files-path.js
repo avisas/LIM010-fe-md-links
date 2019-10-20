@@ -49,6 +49,19 @@ const findAllMarkdownFiles = (filePathList) => {
   return markdownFiles;
 };
 
+const extractLinksFromMdFiles = (paths) => {
+  let linksOfMdFiles = [];
+  if (validateDirectory(paths)) {
+    const allFilesPaths = getFilePaths(paths);
+    const markdownFiles = findAllMarkdownFiles(allFilesPaths);
+    linksOfMdFiles = extractLinks(markdownFiles); // falta crear función
+  } else {
+    linksOfMdFiles = 'No existe el directorio especificado';
+  }
+  return linksOfMdFiles;
+};
+
+
 export {
-  directoryExists, getAbsolutePath, isDirectory, isMdFile, getFilePaths, findAllMarkdownFiles,
+  directoryExists, getAbsolutePath, isDirectory, isMdFile, getFilePaths, findAllMarkdownFiles, extractLinksFromMdFiles,
 };
