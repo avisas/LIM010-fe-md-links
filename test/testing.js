@@ -13,6 +13,7 @@ const isMdFile = (thePath) => {
 const isDirectory = (thePath) => fs.statSync(thePath).isDirectory();
 
 const getAbsolutePath = (thePath) => ((path.isAbsolute(thePath)) ? thePath : path.resolve(thePath));
+console.log(getAbsolutePath('path/to/fake/dir/firstPathfile'));
 
 const rootPath = 'C:\\Users\\Alejandra\\Downloads';
 

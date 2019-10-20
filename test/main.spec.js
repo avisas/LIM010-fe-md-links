@@ -1,5 +1,5 @@
 import {
-  validateDirectory, getFilePaths, findAllMarkdownFiles, getAbsolutePath, isFile, isMd, directoryExists,
+  isDirectory, getFilePaths, findAllMarkdownFiles, getAbsolutePath, isMdFile, directoryExists, extractLinksFromMdFiles
 } from '../src/files-path.js';
 import { pathsFromAllFiles, mdFiles } from './file-structure.js';
 
@@ -34,10 +34,10 @@ afterAll(() => { mock.restore(); });
 
 describe('Convert relative path to absolute path', () => {
   it('debería convertir una ruta relativa a una ruta absoluta', () => {
-    expect(getAbsolutePath('path/to/fake/dir')).toBe('path/to/fake/dir');
+    expect(getAbsolutePath('path/to/fake/dir')).toBe('C:\\Users\\Alejandra\\Documents\\Laboratoria\\LIM010-fe-md-links-ale\\path\\to\\fake\\dir');
   });
   it('debería retornar la misma ruta si es absoluta', () => {
-    expect(getAbsolutePath('path/to/fake/dir')).toBe('path/to/fake/dir');
+    expect(getAbsolutePath('C:\\Users\\Alejandra\\Documents\\Laboratoria\\LIM010-fe-md-links-ale\\path\\to\\fake\\dir')).toBe('C:\\Users\\Alejandra\\Documents\\Laboratoria\\LIM010-fe-md-links-ale\\path\\to\\fake\\dir');
   });
 });
 
@@ -60,12 +60,12 @@ describe('Does the directory exists?', () => {
   });
 });
 
-describe('Is it a markdown file?', () => {
+describe('Is the path a directory  ?', () => {
   it('debería retornar true si la ruta absoluta es un directorio', () => {
-    expect(isDirectory('path/to/fake/dir/some-file.md')).toBe(true);
+    expect(isDirectory('C:\\Users\\Alejandra\\Documents\\Laboratoria\\LIM010-fe-md-links-ale\\path\\to\\fake\\dir\\firstPathfile')).toBe(true);
   });
   it('Debería retornar false si la ruta absoluta no es un directorio', () => {
-    expect(isDirectory('path/to/fake/dir/firstPathfile/some-file2.txt')).toBe(false);
+    expect(isDirectory('C:\\Users\\Alejandra\\Documents\\Laboratoria\\LIM010-fe-md-links-ale\\path\\to\\fake\\dir\\firstPathfile\\some-file2.txt')).toBe(false);
   });
 });
 
@@ -76,23 +76,13 @@ describe('getFilePaths', () => {
 });
 
 describe('Find all Markdown Files', () => {
-  it('debería extraer en un array todos los archivos markdown de cada directorio', () => {
+  it('debería extraer en un array todos los archivos markdown', () => {
     expect(findAllMarkdownFiles(pathsFromAllFiles)).toStrictEqual(mdFiles);
   });
 });
 
 describe('extract the Links from Markdown files', () => {
   it('debería extraer todos los links de cada archivo markdown', () => {
-    expect(extractLinksFromMdFiles).toBe();
+    expect(extractLinksFromMdFiles(mdFiles)).toStrictEqual(listOfURLs);
   });
 });
-
-// describe('validateURL', () => {
-//   it('debería validar todos los links de cada URL', (done) => {
-//     validateURL()
-//       .then((data) => {
-//         expect(data).toStrictEqual();
-//         done();
-//       });
-//   });
-// });
