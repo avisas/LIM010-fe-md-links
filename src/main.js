@@ -17,9 +17,16 @@ const main = (inputUserPath, options) => {
 const updateListOfMarkdownFiles = (listOfMarkdownFiles = [], path = '') => {
   if (isMdFile(path)) {
     listOfMarkdownFiles.push(getAbsolutePath(path));
-  } else if (isDirectory(path)) {    
-    path.forEachFile(childPath => updateListOfMarkdownFiles(listOfMarkdownFiles, childPath));
-  }; // si es un directory, ahora listar todos sus archivos o carpetas hijo.
+  } else if (isDirectory(path)) {
+    fs.readdir(path, (error, childItems) => {
+      if (error) {
+        console.log(error);
+      } else {  // if it's a folder then check each item within
+        console.log(childchildItemsFiles);
+        childItems.forEach(childItem => updateListOfMarkdownFiles(listOfMarkdownFiles, path.join(path, childItem)));
+      }
+    });
+  };
 };
 
 const getListOfURLProperties = (markdownFiles = []) => {

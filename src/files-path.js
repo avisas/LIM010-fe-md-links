@@ -52,7 +52,7 @@ const findAllMarkdownFiles = (filePathList) => {
 const extractLinksFromMdFiles = (paths) => {
   let linksOfMdFiles = [];
   const render = new marked.Renderer();
-  if (validateDirectory(paths)) { //cambiar a función isDirectory
+  if (isDirectory(paths)) {
     const allFilesPaths = getFilePaths(paths); //corregir función
     const markdownFiles = findAllMarkdownFiles(allFilesPaths);
     markdownFiles.forEach((aPath) => {
