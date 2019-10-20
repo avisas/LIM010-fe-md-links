@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const marked = require('marked');
 
 const directoryExists = (dir) => {
   try {
@@ -53,7 +54,7 @@ const extractLinksFromMdFiles = (paths) => {
   let linksOfMdFiles = [];
   const render = new marked.Renderer();
   if (isDirectory(paths)) {
-    const allFilesPaths = getFilePaths(paths); //corregir función
+    const allFilesPaths = getFilePaths(paths); // corregir función
     const markdownFiles = findAllMarkdownFiles(allFilesPaths);
     markdownFiles.forEach((aPath) => {
       const file = fs.readFileSync(aPath);
