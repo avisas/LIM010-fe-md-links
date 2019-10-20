@@ -1,4 +1,5 @@
-import { pathsFromAllFiles, mdFiles, listOfURLs } from './file-structure.js';
+import { listOfURLFinalObj, listOfAbsPath } from './file-structure.js';
+import { main, updateListOfMarkdownFiles, getListOfURLProperties } from '../src/main.js';
 
 const mock = require('mock-fs');
 
@@ -29,8 +30,20 @@ const fileStructure = {
 beforeEach(() => { mock(fileStructure); });
 afterAll(() => { mock.restore(); });
 
-describe('getFilePaths', () => {
-  it('debería obtener recursivamente en un array las rutas de todos los archivos', () => {
-    expect(getFilePaths('path/to/fake/dir')).toStrictEqual(pathsFromAllFiles);
+describe('main function', () => {
+  it('debería mostrar en consola', () => {
+    expect(main()).toStrictEqual();
+  });
+});
+
+describe('update list of markdown files', () => {
+  it('debería obtener un array de archivos .md con rutas absolutas de cada elemento', () => {
+    expect(updateListOfMarkdownFiles(mdFiles, 'C:\\Users\\Alejandra\\Documents\\Laboratoria\\LIM010-fe-md-links-ale\\path\\to\\fake\\dir\\firstPathfile\\some-file2.md')).toStrictEqual(listOfAbsPath);
+  });
+});
+
+describe('get the list of URL properties', () => {
+  it('debería obtener un array con la lista de links de archivos .md y sus propiedades', () => {
+    expect(getListOfURLProperties(mdFiles)).toStrictEqual(listOfURLFinalObj);
   });
 });
