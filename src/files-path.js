@@ -51,9 +51,23 @@ const findAllMarkdownFiles = (filePathList) => {
 
 const extractLinksFromMdFiles = (paths) => {
   let linksOfMdFiles = [];
-  if (validateDirectory(paths)) {
-    const allFilesPaths = getFilePaths(paths);
+  const render = new marked.Renderer();
+  if (validateDirectory(paths)) { //cambiar a función isDirectory
+    const allFilesPaths = getFilePaths(paths); //corregir función
     const markdownFiles = findAllMarkdownFiles(allFilesPaths);
+    markdownFiles.forEach((aPath) => {
+      const file = fs.readFileSync(aPath);
+      render.link = (hrefFile, titleFile, textFile) => {
+        arrayofLinks.push({
+          href: hrefFile,
+          text: textFile.substring(0, 50),
+          path: aPath,
+        });
+      };
+      marked(file.toString(), {
+        renderer = render,
+      });
+    });
     linksOfMdFiles = extractLinks(markdownFiles); // falta crear función
   } else {
     linksOfMdFiles = 'No existe el directorio especificado';

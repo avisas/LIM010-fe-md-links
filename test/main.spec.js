@@ -1,5 +1,5 @@
 import {
-  validateDirectory, getFilePaths, findAllMarkdownFiles, getAbsolutePath, isFile, isMd,
+  validateDirectory, getFilePaths, findAllMarkdownFiles, getAbsolutePath, isFile, isMd, directoryExists,
 } from '../src/files-path.js';
 import { pathsFromAllFiles, mdFiles } from './file-structure.js';
 
@@ -14,7 +14,7 @@ const fileStructure = {
       'some-file2.txt': 'file content here2',
       'some-file2.md': `'some other content with several links
       [medium](https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d)
-      [markdown](https://joedicastro.com/pages/markdown.html)
+      [markdown](https://joedicastro.com/pages/markdown.html/wrongurl)
       [RegExp](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/RegExp)'`,
       SecondPathFile: {
         'some-file3.txt': 'file content here3',
@@ -41,31 +41,31 @@ describe('Convert relative path to absolute path', () => {
   });
 });
 
-describe('Is it a File?', () => {
-  it('debería retornar true si es un archivo', () => {
-    expect(isFile('path/to/fake/dir')).toBe(true);
+describe('Is it a markdown file?', () => {
+  it('debería retornar true si es un archivo markdown', () => {
+    expect(isMdFile('path/to/fake/dir/some-file.md')).toBe(true);
   });
-  it('debería retornar la misma ruta si es absoluta', () => {
-    expect(isFile('path/to/fake/dir')).toBe(false);
+  it('Debería retornar false si no es un archivo markdown', () => {
+    expect(isMdFile('path/to/fake/dir/firstPathfile/some-file2.txt')).toBe(false);
+  });
+});
+
+describe('Does the directory exists?', () => {
+  it('debería retornar true si el directorio existe', () => {
+    expect(directoryExists('path/to/fake/dir')).toBe(true);
+  });
+
+  it('debería retornar false si el directorio no existe', () => {
+    expect(directoryExists('path/to/fake/dirfake')).toBe(false);
   });
 });
 
 describe('Is it a markdown file?', () => {
-  it('Debería retornar true si la extensión del archivo es .md', () => {
-    expect(isMd('path/to/fake/dir/some-file.md')).toBe(true);
+  it('debería retornar true si la ruta absoluta es un directorio', () => {
+    expect(isDirectory('path/to/fake/dir/some-file.md')).toBe(true);
   });
-  it('Debería retornar false si la extensión del archivo no es .md', () => {
-    expect(isMd('path/to/fake/dir/firstPathfile/some-file2.txt')).toBe(false);
-  });
-});
-
-describe('validate directory', () => {
-  it('debería retornar true si el directorio existe', () => {
-    expect(validateDirectory('path/to/fake/dir')).toBe(true);
-  });
-
-  it('debería retornar false si el directorio no existe', () => {
-    expect(validateDirectory('path/to/fake/dirfake')).toBe(false);
+  it('Debería retornar false si la ruta absoluta no es un directorio', () => {
+    expect(isDirectory('path/to/fake/dir/firstPathfile/some-file2.txt')).toBe(false);
   });
 });
 
@@ -81,11 +81,11 @@ describe('Find all Markdown Files', () => {
   });
 });
 
-// describe('allMarkdownLinks', () => {
-//   it('debería extraer todos los links de cada archivo markdown', () => {
-//     expect().toBe();
-//   });
-// });
+describe('extract the Links from Markdown files', () => {
+  it('debería extraer todos los links de cada archivo markdown', () => {
+    expect(extractLinksFromMdFiles).toBe();
+  });
+});
 
 // describe('validateURL', () => {
 //   it('debería validar todos los links de cada URL', (done) => {

@@ -8,13 +8,13 @@ const getListOfURLs = (strContentOfFile) => {
 };
 
 const getURLFinalObject = (absPath, strNameAndURL) => {
-  let name = strNameAndURL.match(/\[.*\]/gm); // ['[pepito5]']
-  name = name[0].slice(1, -1); // retorna name puro.
+  let text = strNameAndURL.match(/\[.*\]/gm); // ['[pepito5]']
+  text = text[0].slice(1, -1); // retorna name puro.
   let url = strNameAndURL.match(/\(http.+\)/gm); // ['(http://wb.com)']
   url = url[0].slice(1, -1); // retorna url puro.
   const { status, codeStatus } = validateURL(url);
   return {
-    name, url, absPath, status, codeStatus,
+    text, url, absPath, status, codeStatus,
   };
 };
 
