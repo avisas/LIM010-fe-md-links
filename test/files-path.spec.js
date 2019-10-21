@@ -1,7 +1,8 @@
 import {
-  isDirectory, getFilePaths, findAllMarkdownFiles, getAbsolutePath, isMdFile, directoryExists, extractLinksFromMdFiles
+  isDirectory, findAllMarkdownFiles, getAbsolutePath, isMdFile,
+  directoryExists,
 } from '../src/files-path.js';
-import { pathsFromAllFiles, mdFiles, listOfURLs } from './file-structure.js';
+import { pathsFromAllFiles, mdFiles } from './file-structure.js';
 
 const mock = require('mock-fs');
 
@@ -69,20 +70,14 @@ describe('Is the path a directory  ?', () => {
   });
 });
 
-describe('getFilePaths', () => {
-  it('debería obtener recursivamente en un array las rutas de todos los archivos', () => {
-    expect(getFilePaths('path/to/fake/dir')).toStrictEqual(pathsFromAllFiles);
-  });
-});
-
 describe('Find all Markdown Files', () => {
   it('debería extraer en un array todos los archivos markdown', () => {
     expect(findAllMarkdownFiles(pathsFromAllFiles)).toStrictEqual(mdFiles);
   });
 });
 
-describe('extract the Links from Markdown files', () => {
-  it('debería extraer todos los links de cada archivo markdown', () => {
-    expect(extractLinksFromMdFiles(mdFiles)).toStrictEqual(listOfURLs);
-  });
-});
+// describe('extract the Links from Markdown files', () => {
+//   it('debería extraer todos los links de cada archivo markdown', () => {
+//     expect(extractLinksFromMdFiles(mdFiles)).toStrictEqual(listOfURLs);
+//   });
+// });

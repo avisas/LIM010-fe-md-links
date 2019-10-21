@@ -1,13 +1,11 @@
-import { directoryExists } from './files-path.js';
-
 const fetch = require('node-fetch');
 
-const getListOfURLs = (strContentOfFile) => {
+export const getListOfURLs = (strContentOfFile) => {
   const regexNameURL = /\[.*\]\(http.+\)/gm;
   return strContentOfFile.match(regexNameURL); // array of strings
 };
 
-const getURLFinalObject = (absPath, strNameAndURL) => {
+export const getURLFinalObject = (absPath, strNameAndURL) => {
   let text = strNameAndURL.match(/\[.*\]/gm); // ['[pepito5]']
   text = text[0].slice(1, -1); // retorna name puro.
   let url = strNameAndURL.match(/\(http.+\)/gm); // ['(http://wb.com)']
@@ -18,7 +16,7 @@ const getURLFinalObject = (absPath, strNameAndURL) => {
   };
 };
 
-const validateURL = (url) => {
+export const validateURL = (url) => {
   let status = 'FAIL';
   let codeStatus = '404';
 
@@ -34,14 +32,10 @@ const validateURL = (url) => {
   return { status, codeStatus };
 };
 
-const calculateStats = (listOfAllURLs) => {
+export const calculateStats = (listOfAllURLs) => {
   const total = listOfAllURLs.length;
   const unique = (new Set(listOfAllURLs.map((objUrl) => objUrl.url))).size;
   const broken = listOfAllURLs.filter((objUrl) => objUrl.status !== 'OK');
 
   return { total, unique, broken };
-};
-
-export {
-  getListOfURLs, getURLFinalObject, validateURL, calculateStats, extractLinksFromMdFiles,
 };

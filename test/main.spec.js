@@ -1,4 +1,4 @@
-import { listOfURLFinalObj, listOfAbsPath } from './file-structure.js';
+import { listOfURLFinalObj, listOfAbsPath, mdFiles } from './file-structure.js';
 import { main, updateListOfMarkdownFiles, getListOfURLProperties } from '../src/main.js';
 
 const mock = require('mock-fs');
