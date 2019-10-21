@@ -5,31 +5,28 @@ export const getListOfURLs = (strContentOfFile) => {
   return strContentOfFile.match(regexNameURL); // array of strings
 };
 
-export const getURLFinalObject = (absPath, strNameAndURL) => {
+export const getURLFinalObject = (file, strNameAndURL, callback) => {
   let text = strNameAndURL.match(/\[.*\]/gm); // ['[pepito5]']
   text = text[0].slice(1, -1); // retorna name puro.
-  let url = strNameAndURL.match(/\(http.+\)/gm); // ['(http://wb.com)']
-  url = url[0].slice(1, -1); // retorna url puro.
-  const { status, codeStatus } = validateURL(url);
-  return {
-    text, url, absPath, status, codeStatus,
-  };
+  let href = strNameAndURL.match(/\(http.+\)/gm); // ['(http://wb.com)']
+  href = href[0].slice(1, -1); // retorna href puro.
+  validateURL(href, (responseObject) => {
+    let status = responseObject.status;
+    let codeStatus = responseObject.codeStatus;
+    callback({ text, href, file, status, codeStatus});
+  });
 };
 
-export const validateURL = (url) => {
-  let status = 'FAIL';
-  let codeStatus = '404';
-
+export const validateURL = (url, callback) => {
   fetch(url)
-    .then((response) => {
-      status = (response.ok) ? 'OK' : 'FAIL';
-      codeStatus = response.status;
-    })
-    .catch((error) => {
-      console.error(`Error: ${error}`);
-    });
-
-  return { status, codeStatus };
+      .then((response) => {
+          let status = (response.ok) ? 'OK' : 'FAIL';
+          let codeStatus = response.status;
+          callback({ status, codeStatus }) ;
+      })
+      .catch((error) => {
+          console.error(`Error: ${error}`);
+      });
 };
 
 export const calculateStats = (listOfAllURLs) => {

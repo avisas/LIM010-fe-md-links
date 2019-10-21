@@ -8,14 +8,19 @@ const options = {
   validate: false
 };
 
-const main = (inputUserPath, options) => {
+export const mdLinks = (inputUserPath, options) => {
   const listOfMarkdownFiles = [];
-  updateListOfMarkdownFiles(listOfMarkdownFiles, inputUserPath); // ['absPath1/file1.md', 'absPath2/file2.md', ...]
-  const listOfURLProperties = getListOfURLProperties(listOfMarkdownFiles); // []
-  printConsole(listOfURLProperties, options);
+  updateListOfMarkdownFiles(listOfMarkdownFiles, getAbsolutePath(inputUserPath)); // ['absPath1/file1.md', 'absPath2/file2.md', ...]
+  getListOfURLProperties(listOfMarkdownFiles, (listOfURLProperties) => {
+      printConsole(listOfURLProperties, options); 
+  });
 };
 
-const updateListOfMarkdownFiles = (listOfMarkdownFiles = [], path = '') => {
+export const printConsole = (listOfURLProperties, options) => {
+  // pendiente de hacer
+};
+
+export const updateListOfMarkdownFiles = (listOfMarkdownFiles = [], path = '') => {
   if (isMdFile(path)) {
     listOfMarkdownFiles.push(getAbsolutePath(path));
   } else if (isDirectory(path)) {
@@ -30,17 +35,24 @@ const updateListOfMarkdownFiles = (listOfMarkdownFiles = [], path = '') => {
   };
 };
 
-const getListOfURLProperties = (markdownFiles = []) => {
-  const output = [];
-  markdownFiles.forEach(mdFilePath => {
-    unProcessedListOfNamesAndURLs = getListOfURLs(mdFilePath.content()); //acceder a todo su contenido
-    unProcessedListOfNamesAndURLs.forEach(nameAndURL => {
-      output.push(getURLFinalObject(mdFilePath, nameAndURL));
-    });
-  });
-  return output;
+const readFileOptions = {
+  encoding: 'utf8',
+  flag: 'r'
 };
 
-export { main, updateListOfMarkdownFiles, getListOfURLProperties };
-
+export const getListOfURLProperties = (markdownFiles = [], callback) => {
+  const output = [];
+  markdownFiles.forEach(mdFilePath => {
+      fs.readFile(mdFilePath, readFileOptions, (error, fileContent) => {
+          if (error) throw error;
+          let unProcessedListOfNamesAndURLs = getListOfURLs(fileContent); //acceder a todo su contenido
+          unProcessedListOfNamesAndURLs.forEach(nameAndURL => {
+              getURLFinalObject(mdFilePath, nameAndURL, (objProperties) => {
+                  output.push(objProperties);
+                  callback(output);
+              });
+          });            
+      });
+  });
+};
 

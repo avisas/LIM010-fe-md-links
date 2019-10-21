@@ -1,21 +1,62 @@
-// const fs = require('fs');
-// const path = require('path');
+const fetch = require('node-fetch');
+const fs = require('fs');
 
-// const isMdFile = (thePath) => {
-//   if (fs.statSync(thePath).isFile()) {
-//     if (path.extname(thePath) === '.md') {
-//       return true;
-//     }
-//   }
-//   return false;
-// };
+const validateURL = (url, callback) => {
+    fetch(url)
+        .then((response) => {
+            let status = (response.ok) ? 'OK' : 'FAIL';
+            let codeStatus = response.status;
+            callback({ status, codeStatus });
+        })
+        .catch((error) => {
+            console.error(`Error: ${error}`);
+        });
+};
 
-// const isDirectory = (thePath) => fs.statSync(thePath).isDirectory();
+const getListOfURLs = (strContentOfFile) => {
+    const regexNameURL = /\[.*\]\(http.+\)/gm;
+    return strContentOfFile.match(regexNameURL); // array of strings
+};
 
-// const getAbsolutePath = (thePath) => {
-// ((path.isAbsolute(thePath)) ? thePath : path.resolve(thePath));
-// };
-// console.log(getAbsolutePath('path/to/fake/dir/firstPathfile'));
+const getURLFinalObject = (absPath, strNameAndURL, callback) => {
+    let text = strNameAndURL.match(/\[.*\]/gm); // ['[pepito5]']
+    text = text[0].slice(1, -1); // retorna name puro.
+    let url = strNameAndURL.match(/\(http.+\)/gm); // ['(http://wb.com)']
+    url = url[0].slice(1, -1); // retorna url puro.
+    validateURL(url, (responseObject) => {
+        let status = responseObject.status;
+        let codeStatus = responseObject.codeStatus;
+        callback({ text, url, absPath, status, codeStatus });
+    });
+};
+
+const readFileOptions = {
+    encoding: 'utf8',
+    flag: 'r'
+};
+
+const getListOfURLProperties = (markdownFiles = [], callback) => {
+    const output = [];
+    markdownFiles.forEach(mdFilePath => {
+        fs.readFile(mdFilePath, readFileOptions, (error, fileContent) => {
+            if (error) throw error;
+            let unProcessedListOfNamesAndURLs = getListOfURLs(fileContent); //acceder a todo su contenido
+            unProcessedListOfNamesAndURLs.forEach(nameAndURL => {
+                getURLFinalObject(mdFilePath, nameAndURL, (objProperties) => {
+                    console.log(objProperties);
+                    output.push(objProperties);
+                    console.log(output.length);
+                    callback(output);
+                });
+            });            
+        });
+    });
+};
+
+getListOfURLProperties(['C:\\Users\\Alejandra\\Downloads\\README.md'], (response) => {
+    // console.log(response);
+    console.log(`LONGITUD FINAL DE CONSOLE LOG: ${response.length}`);
+});
 
 // const rootPath = 'C:\\Users\\Alejandra\\Downloads';
 
