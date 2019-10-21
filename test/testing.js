@@ -18,7 +18,7 @@ const getListOfURLs = (strContentOfFile) => {
   return strContentOfFile.match(regexNameURL); // array of strings
 };
 
-const getURLFinalObject = (absPath, strNameAndURL, callback) => {
+const getURLFinalObject = (file, strNameAndURL, callback) => {
   let text = strNameAndURL.match(/\[.*\]/gm); // ['[pepito5]']
   text = text[0].slice(1, -1); // retorna name puro.
   let url = strNameAndURL.match(/\(http.+\)/gm); // ['(http://wb.com)']
@@ -27,7 +27,7 @@ const getURLFinalObject = (absPath, strNameAndURL, callback) => {
     const status = responseObject.status;
     const codeStatus = responseObject.codeStatus;
     callback({
-      text, url, absPath, status, codeStatus, 
+      text, url, file, status, codeStatus,
     });
   });
 };
