@@ -38,6 +38,7 @@
     "mock-fs": "^4.10.1"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.6.0"
+    "@babel/polyfill": "^7.6.0",
+    "node-fetch": "^2.6.0"
   }
 }

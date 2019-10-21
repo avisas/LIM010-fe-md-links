@@ -1,59 +1,38 @@
-import { directoryExists } from './files-path.js';
-
 const fetch = require('node-fetch');
 
-const getListOfURLs = (strContentOfFile) => {
+export const getListOfURLs = (strContentOfFile) => {
   const regexNameURL = /\[.*\]\(http.+\)/gm;
   return strContentOfFile.match(regexNameURL); // array of strings
 };
 
-const getURLFinalObject = (absPath, strNameAndURL) => {
-  let name = strNameAndURL.match(/\[.*\]/gm); // ['[pepito5]']
-  name = name[0].slice(1, -1); // retorna name puro.
-  let url = strNameAndURL.match(/\(http.+\)/gm); // ['(http://wb.com)']
-  url = url[0].slice(1, -1); // retorna url puro.
-  const { status, codeStatus } = validateURL(url);
-  return {
-    name, url, absPath, status, codeStatus,
-  };
+export const getURLFinalObject = (file, strNameAndURL, callback) => {
+  let text = strNameAndURL.match(/\[.*\]/gm); // ['[pepito5]']
+  text = text[0].slice(1, -1); // retorna name puro.
+  let href = strNameAndURL.match(/\(http.+\)/gm); // ['(http://wb.com)']
+  href = href[0].slice(1, -1); // retorna href puro.
+  validateURL(href, (responseObject) => {
+    let status = responseObject.status;
+    let codeStatus = responseObject.codeStatus;
+    callback({ text, href, file, status, codeStatus});
+  });
 };
 
-const validateURL = (url) => {
-  let status = 'FAIL';
-  let codeStatus = '404';
-
+export const validateURL = (url, callback) => {
   fetch(url)
-    .then((response) => {
-      status = (response.ok) ? 'OK' : 'FAIL';
-      codeStatus = response.status;
-    })
-    .catch((error) => {
-      console.error(`Error: ${error}`);
-    });
-
-  return { status, codeStatus };
+      .then((response) => {
+          let status = (response.ok) ? 'OK' : 'FAIL';
+          let codeStatus = response.status;
+          callback({ status, codeStatus }) ;
+      })
+      .catch((error) => {
+          console.error(`Error: ${error}`);
+      });
 };
 
-const calculateStats = (listOfAllURLs) => {
+export const calculateStats = (listOfAllURLs) => {
   const total = listOfAllURLs.length;
   const unique = (new Set(listOfAllURLs.map((objUrl) => objUrl.url))).size;
   const broken = listOfAllURLs.filter((objUrl) => objUrl.status !== 'OK');
 
   return { total, unique, broken };
-};
-
-const extractLinksFromMdFiles = (paths) => {
-  let linksOfMdFiles = [];
-  if (validateDirectory(paths)) {
-    // const allFilesPaths = getFilePaths(paths);
-    // const markdownFiles = readAllMarkdownFiles(allFilesPaths);
-    // linksOfMdFiles = extractLinks(markdownFiles); // falta crear función
-  } else {
-    linksOfMdFiles = 'No existe el directorio especificado';
-  }
-  return linksOfMdFiles;
-};
-
-export {
-  getListOfURLs, getURLFinalObject, validateURL, calculateStats, extractLinksFromMdFiles,
 };
