@@ -26,7 +26,9 @@ const getURLFinalObject = (absPath, strNameAndURL, callback) => {
   validateURL(url, (responseObject) => {
     const status = responseObject.status;
     const codeStatus = responseObject.codeStatus;
-    callback({ text, url, absPath, status, codeStatus });
+    callback({
+      text, url, absPath, status, codeStatus, 
+    });
   });
 };
 
