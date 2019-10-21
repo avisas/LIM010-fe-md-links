@@ -1,3 +1,4 @@
+import { validateURL, getListOfURLs, getURLFinalObject, calculateStats } from '../src/url-links.js';
 const mock = require('mock-fs');
 
 const fileStructure = {
@@ -26,3 +27,15 @@ const fileStructure = {
 
 beforeEach(() => { mock(fileStructure); });
 afterAll(() => { mock.restore(); });
+
+describe('validate url', () => {
+  it('debería retornar un ', () => {
+    expect(validateURL()).toStrictEqual();
+  });
+});
+
+describe('calculate stats of each URL', () => {
+  it('debería retornar un objeto con tres propiedades', () => {
+    expect(calculateStats()).toStrictEqual();
+  });
+});

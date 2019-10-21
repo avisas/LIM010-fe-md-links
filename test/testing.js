@@ -34,7 +34,7 @@ const getURLFinalObject = (file, strNameAndURL, callback) => {
 
 const readFileOptions = {
   encoding: 'utf8',
-  flag: 'r'
+  flag: 'r',
 };
 
 const getListOfURLProperties = (markdownFiles = [], callback) => {
