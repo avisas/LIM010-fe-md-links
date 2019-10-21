@@ -16,8 +16,8 @@ export const isMdFile = (thePath) => {
   if (fs.statSync(thePath).isFile()) {
     if (path.extname(thePath) === '.md') {
       return true;
-    };
-  };
+    }
+  }
   return false;
 };
 

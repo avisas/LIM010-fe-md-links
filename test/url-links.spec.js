@@ -26,4 +26,3 @@ const fileStructure = {
 
 beforeEach(() => { mock(fileStructure); });
 afterAll(() => { mock.restore(); });
-

@@ -1,5 +1,5 @@
 import { listOfURLFinalObj, listOfAbsPath, mdFiles } from './file-structure.js';
-import { main, updateListOfMarkdownFiles, getListOfURLProperties } from '../src/main.js';
+import { mdLinks, updateListOfMarkdownFiles, getListOfURLProperties } from '../src/main.js';
 
 const mock = require('mock-fs');
 
@@ -32,7 +32,7 @@ afterAll(() => { mock.restore(); });
 
 describe('main function', () => {
   it('debería mostrar en consola', () => {
-    expect(main()).toStrictEqual();
+    expect(mdLinks()).toStrictEqual();
   });
 });
 
