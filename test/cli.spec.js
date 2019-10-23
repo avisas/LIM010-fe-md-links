@@ -18,12 +18,14 @@ ${chalk.bgBlue.black(path.join(process.cwd(), 'dir-test', 'first.md'))} ${chalk.
 ${chalk.bgBlue.black(path.join(process.cwd(), 'dir-test', 'first.md'))} ${chalk.magenta('https://eswikipedia.org/wiki/Markdown')} ${chalk.green('200')} ${chalk.bgGreen.black('OK')} ${chalk.yellow('3')}
 ${chalk.bgBlue.black(path.join(process.cwd(), 'dir-test', 'first.md'))} ${chalk.magenta('http://www.wheresrhys.co.uk/fetch-mock_reset')} ${chalk.red('404')} ${chalk.bgRed.black('FAIL')} ${chalk.yellow('4')}`;
 
+console.log('ESTO ES PRUEBA DE CWD!!!!!!!!!!!', process.cwd);
+
 describe('Command line', () => {
   fetchMock
-    .mock('https://es.wikipedia.org/wiki/Markdown', 200)
-    .mock('https://github.com', 200)
-    .mock('https://eswikipedia.org/wiki/Markdown', 'ERR')
-    .mock('http://www.wheresrhys.co.uk/fetch-mock_reset', 404);
+    .mock('https://www.markdownguide.org/getting-started/', 200)
+    .mock('https://developer.mozilla.org/es/docs/Web/JavaScript', 200)
+    .mock('https://hackwild.com/article/creating-a-command', 'ERR')
+    .mock('https://medium.com/@josephcardillo/the-difference', 404);
 
   it('Debería retornar function', () => {
     expect(typeof cli.showCli).toBe('function');
