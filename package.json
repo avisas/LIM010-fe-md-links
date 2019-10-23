@@ -1,5 +1,5 @@
 {
-  "name": "check-url",
+  "name": "md-links",
   "version": "1.0.4",
   "description": "Validate URLs and return Promises",
   "main": "src/md-links.js",
@@ -37,17 +37,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rvisas/check-url.git"
+    "url": "git+https://github.com/avisas/LIM010-fe-md-links.git"
   },
   "keywords": [
     "javascript",
     "jest",
     "md-links"
   ],
-  "author": "Ronny Visa",
+  "author": "Alejandra Visa",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rvisas/check-url/issues"
+    "url": "https://github.com/LIM010-fe-md-links/issues"
   },
-  "homepage": "https://github.com/rvisas/check-url#readme"
+  "homepage": "https://github.com/avisas/LIM010-fe-md-links#readme"
 }
