@@ -29,18 +29,3 @@ const validateLink = (route) => {
 module.exports = {
   validateLink,
 };
-/*
-const obj = {
-  name: 'alba',
-  colores: {
-    fist: 'red',
-    second: 'negro'
-  }
-}
-
-const copia = {...obj, colores: {...obj.colores}}
-
-copia.colores.fist  = 'green'
-
-console.log(obj)
-*/
