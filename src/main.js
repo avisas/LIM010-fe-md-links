@@ -29,8 +29,8 @@ const searchMds = (routeFile) => {
 const saveLinksMds = (inputRoute) => {
   const arrayOfRoutes = searchMds(inputRoute);
   const arrayofLinks = [];
-  const render = new marked.Renderer();
   arrayOfRoutes.forEach((route) => {
+    const render = new marked.Renderer();
     const file = fs.readFileSync(route);
     render.link = (hrefFile, titleFile, textFile) => {
       arrayofLinks.push({

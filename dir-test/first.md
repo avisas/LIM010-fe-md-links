@@ -1,5 +1,5 @@
-[1](https://es.wikipedia.org/wiki/Markdown)
+[1](https://www.markdownguide.org/getting-started/)
 Primer ejemplo de Md
-[2](https://github.com)
-[3](https://eswikipedia.org/wiki/Markdown)
-[4](http://www.wheresrhys.co.uk/fetch-mock_reset)
+[2](https://developer.mozilla.org/es/docs/Web/JavaScript)
+[3](https://hackwild.com/article/creating-a-command)
+[4](https://medium.com/@josephcardillo/the-difference)
