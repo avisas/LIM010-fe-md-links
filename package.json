@@ -1,44 +1,53 @@
 {
-  "name": "lim010-fe-md-links",
-  "version": "1.0.0",
-  "description": "[Markdown](https://es.wikipedia.org/wiki/Markdown) es un lenguaje de marcado\r ligero muy popular entre developers. Es usado en muchísimas plataformas que\r manejan texto plano (GitHub, foros, blogs, ...), y es muy común\r encontrar varios archivos en ese formato en cualquier tipo de repositorio\r (empezando por el tradicional `README.md`).",
-  "main": "app.js",
+  "name": "check-url",
+  "version": "1.0.4",
+  "description": "Validate URLs and return Promises",
+  "main": "src/md-links.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^3.0.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "marked": "^0.7.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-install": "2.1.0",
+    "babel-jest": "^24.8.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "eslint": "^6.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.17.0",
+    "fetch-mock": "^7.3.9",
+    "jest": "^24.9.0"
+  },
+  "bin": {
+    "md-links": "src/cli.js"
+  },
   "scripts": {
-    "test": "jest --coverage",
-    "eslint": "eslint --ext .js test/",
-    "lint": "npm run eslint",
-    "pretest": "npm run lint"
+    "build": "babel src -d lib",
+    "eslint": "eslint --ext .js src/ test/",
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/avisas/LIM010-fe-md-links.git"
+    "url": "git+https://github.com/rvisas/check-url.git"
   },
   "keywords": [
     "javascript",
-    "node.js",
-    "path"
+    "jest",
+    "md-links"
   ],
-  "author": "Alejandra Visa",
-  "license": "ISC",
+  "author": "Ronny Visa",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/avisas/LIM010-fe-md-links/issues"
+    "url": "https://github.com/rvisas/check-url/issues"
   },
-  "homepage": "https://github.com/avisas/LIM010-fe-md-links#readme",
-  "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-install": "2.1.0",
-    "eslint": "^6.1.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.19.0",
-    "jest": "^24.9.0",
-    "mock-fs": "^4.10.1"
-  },
-  "dependencies": {
-    "@babel/polyfill": "^7.6.0",
-    "node-fetch": "^2.6.0"
-  }
+  "homepage": "https://github.com/rvisas/check-url#readme"
 }
