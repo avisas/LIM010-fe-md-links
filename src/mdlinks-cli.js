@@ -14,11 +14,11 @@ program
 program.parse(process.argv);
 
 const getOption = (option1, option2) => {
-  if (option1 === '--validate' && option2 === undefined) {
+  if (option1 === '--validate' || option2 === '--validate') {
     return { validate: true };
   }
-  if (option1 === '--stats' && option2 === '--validate') {
-    return { validate: true };
+  if (option1 === '--stats' && option2 === '--stats') {
+    return { stats: true };
   }
   return { validate: false };
 };
