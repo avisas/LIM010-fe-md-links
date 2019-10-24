@@ -1,8 +1,9 @@
 const path = require('path');
 const mdLinks = require('../src/md-links.js');
-const fetchMock = require('../__mocks__/node-fetch.js');
+const fetchMock = require('../__mocks__/node-fetchaa.js');
 
 fetchMock.config.sendAsJson = false;
+console.log('ESTE ES PRUEBA DE FETCHMOCK:', fetchMock.config);
 fetchMock
   .mock('https://www.markdownguide.org/getting-started/', 200)
   .mock('https://developer.mozilla.org/es/docs/Web/JavaScript', 200)

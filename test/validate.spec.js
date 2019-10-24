@@ -1,6 +1,7 @@
 const path = require('path');
-const fetchMock = require('../__mocks__/node-fetch.js');
+const fetchMock = require('fetch-mock');
 const validate = require('../src/validate.js');
+
 
 const route = 'dir-test';
 const output = [

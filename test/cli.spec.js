@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 const path = require('path');
 const cli = require('../src/mdlinks-cli.js');
-const fetchMock = require('../__mocks__/node-fetch.js');
+const fetchMock = require('../__mocks__/node-fetchaa.js');
 
 fetchMock.config.sendAsJson = false;
 
