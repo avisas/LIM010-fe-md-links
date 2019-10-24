@@ -4,37 +4,37 @@ const fetchMock = require('../__mocks__/node-fetch.js');
 
 fetchMock.config.sendAsJson = false;
 fetchMock
-  .mock('https://es.wikipedia.org/wiki/Markdown', 200)
-  .mock('https://github.com', 200)
-  .mock('https://eswikipedia.org/wiki/Markdown', () => {
+  .mock('https://www.markdownguide.org/getting-started/', 200)
+  .mock('https://developer.mozilla.org/es/docs/Web/JavaScript', 200)
+  .mock('https://hackwild.com/article/creating-a-command', () => {
     throw new Error('ERROR_MESSAGE');
   })
-  .mock('http://www.wheresrhys.co.uk/fetch-mock_reset', 404);
+  .mock('https://medium.com/@josephcardillo/the-difference', 404);
 
 const output1 = [
   {
-    href: 'https://es.wikipedia.org/wiki/Markdown',
+    href: 'https://www.markdownguide.org/getting-started/',
     text: '1',
     path: path.join(process.cwd(), 'dir-test', 'first.md'),
     status: 200,
     statusText: 'OK',
   },
   {
-    href: 'https://github.com',
+    href: 'https://developer.mozilla.org/es/docs/Web/JavaScript',
     text: '2',
     path: path.join(process.cwd(), 'dir-test', 'first.md'),
     status: 200,
     statusText: 'OK',
   },
   {
-    href: 'https://eswikipedia.org/wiki/Markdown',
+    href: 'https://hackwild.com/article/creating-a-command',
     text: '3',
     path: path.join(process.cwd(), 'dir-test', 'first.md'),
     status: 'ERR',
     statusText: 'FAIL',
   },
   {
-    href: 'http://www.wheresrhys.co.uk/fetch-mock_reset',
+    href: 'https://medium.com/@josephcardillo/the-difference',
     text: '4',
     path: path.join(process.cwd(), 'dir-test', 'first.md'),
     status: 404,
@@ -43,22 +43,22 @@ const output1 = [
 
 const output2 = [
   {
-    href: 'https://es.wikipedia.org/wiki/Markdown',
+    href: 'https://www.markdownguide.org/getting-started/',
     text: '1',
     path: path.join(process.cwd(), 'dir-test', 'first.md'),
   },
   {
-    href: 'https://github.com',
+    href: 'https://developer.mozilla.org/es/docs/Web/JavaScript',
     text: '2',
     path: path.join(process.cwd(), 'dir-test', 'first.md'),
   },
   {
-    href: 'https://eswikipedia.org/wiki/Markdown',
+    href: 'https://hackwild.com/article/creating-a-command',
     text: '3',
     path: path.join(process.cwd(), 'dir-test', 'first.md'),
   },
   {
-    href: 'http://www.wheresrhys.co.uk/fetch-mock_reset',
+    href: 'https://medium.com/@josephcardillo/the-difference',
     text: '4',
     path: path.join(process.cwd(), 'dir-test', 'first.md'),
   },
