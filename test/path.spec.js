@@ -66,7 +66,7 @@ describe('Save links', () => {
     expect(typeof route.saveLinksMds).toBe('function');
   });
   it('Debería retornar el link del primer elemento del array de links', () => {
-    expect(route.saveLinksMds(path.join(process.cwd(), 'dir-test'))[0].href).toBe('https://es.wikipedia.org/wiki/Markdown');
+    expect(route.saveLinksMds(path.join(process.cwd(), 'dir-test'))[0].href).toBe('https://www.markdownguide.org/getting-started/');
   });
   it('Debería retornar el texto del primer elemento del array de links', () => {
     expect(route.saveLinksMds(path.join(process.cwd(), 'dir-test'))[0].text).toBe('1');
