@@ -42,7 +42,7 @@ describe('Command line', () => {
     });
   });
   it('Debería retornar la ruta, el link, el texto, el status y el statustext de todos los archivos MD', (done) => {
-    cli.showCli({ route: 'dir-test', validate: true, stats: undefined }).then((response) => {
+    cli.showCli({ route: 'dir-test/first.md', validate: true, stats: undefined }).then((response) => {
       expect(response).toStrictEqual(output3);
       done();
     });
