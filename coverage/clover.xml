@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1572035704802" clover="3.2.0">
-  <project timestamp="1572035704802" name="All files">
-    <metrics statements="60" coveredstatements="55" conditionals="12" coveredconditionals="11" methods="19" coveredmethods="18" elements="91" coveredelements="84" complexity="0" loc="60" ncloc="60" packages="1" files="3" classes="3"/>
+<coverage generated="1572036104412" clover="3.2.0">
+  <project timestamp="1572036104413" name="All files">
+    <metrics statements="60" coveredstatements="56" conditionals="12" coveredconditionals="11" methods="19" coveredmethods="19" elements="91" coveredelements="86" complexity="0" loc="60" ncloc="60" packages="1" files="3" classes="3"/>
     <file name="main.js" path="C:\Users\Alejandra\Documents\Laboratoria\LIM010-fe-md-links-ale\src\main.js">
       <metrics statements="42" coveredstatements="38" conditionals="8" coveredconditionals="7" methods="11" coveredmethods="11"/>
       <line num="1" count="2" type="stmt"/>
@@ -58,16 +58,16 @@
       <line num="11" count="1" type="stmt"/>
     </file>
     <file name="validate.js" path="C:\Users\Alejandra\Documents\Laboratoria\LIM010-fe-md-links-ale\src\validate.js">
-      <metrics statements="11" coveredstatements="10" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="3"/>
+      <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
       <line num="5" count="1" type="stmt"/>
       <line num="6" count="4" type="stmt"/>
-      <line num="8" count="4" type="cond" truecount="4" falsecount="0"/>
+      <line num="8" count="3" type="cond" truecount="4" falsecount="0"/>
       <line num="9" count="2" type="stmt"/>
-      <line num="15" count="2" type="stmt"/>
-      <line num="21" count="0" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
       <line num="26" count="1" type="stmt"/>
       <line num="29" count="1" type="stmt"/>
     </file>
