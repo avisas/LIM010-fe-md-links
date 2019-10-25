@@ -1,7 +1,8 @@
 const chalk = require('chalk');
 const path = require('path');
+const fetchMock = require('fetch-mock');
 const cli = require('../src/mdlinks-cli.js');
-const fetchMock = require('../__mocks__/node-fetchaa.js');
+const fetchMock1 = require('../__mocks__/node-fetchaa.js');
 
 fetchMock.config.sendAsJson = false;
 
@@ -65,8 +66,8 @@ describe('Command line', () => {
     });
   });
   it('Debería retornar no se encontraron links en los archivos md', (done) => {
-    cli.showCli({ route: 'di', validate: undefined, stats: undefined }).then((response) => {
-      expect(response).toBe(chalk.yellow('Ingresa una ruta válida.'));
+    cli.showCli({ route: 'dir', validate: undefined, stats: undefined }).then((response) => {
+      expect(response).toBe(chalk.yellow('No se encontraron links o archivos md.'));
       done();
     });
   });
