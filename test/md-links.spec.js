@@ -7,7 +7,7 @@ console.log('ESTE ES PRUEBA DE FETCHMOCK:', fetchMock.config);
 fetchMock
   .mock('https://www.markdownguide.org/getting-started/', 200)
   .mock('https://developer.mozilla.org/es/docs/Web/JavaScript', 200)
-  .mock('https://hackwild.com/article/creating-a-command', () => {
+  .mock('https://hackwildm/article/creating-a-command', () => {
     throw new Error('ERROR_MESSAGE');
   })
   .mock('https://medium.com/@josephcardillo/the-difference', 404);
@@ -28,7 +28,7 @@ const output1 = [
     statusText: 'OK',
   },
   {
-    href: 'https://hackwild.com/article/creating-a-command',
+    href: 'https://hackwildm/article/creating-a-command',
     text: '3',
     path: path.join(process.cwd(), 'dir-test', 'first.md'),
     status: 'ERR',
@@ -54,7 +54,7 @@ const output2 = [
     path: path.join(process.cwd(), 'dir-test', 'first.md'),
   },
   {
-    href: 'https://hackwild.com/article/creating-a-command',
+    href: 'https://hackwildm/article/creating-a-command',
     text: '3',
     path: path.join(process.cwd(), 'dir-test', 'first.md'),
   },
