@@ -16,7 +16,7 @@ const output2 = `\n${chalk.cyan('Total: ')} 4 \n${chalk.cyan('Unique: ')} 4`;
 const output3 = `
 ${chalk.bgBlue.black(path.join(process.cwd(), 'dir-test', 'first.md'))} ${chalk.magenta('https://www.markdownguide.org/getting-started/')} ${chalk.green('200')} ${chalk.bgGreen.black('OK')} ${chalk.yellow('1')}
 ${chalk.bgBlue.black(path.join(process.cwd(), 'dir-test', 'first.md'))} ${chalk.magenta('https://developer.mozilla.org/es/docs/Web/JavaScript')} ${chalk.green('200')} ${chalk.bgGreen.black('OK')} ${chalk.yellow('2')}
-${chalk.bgBlue.black(path.join(process.cwd(), 'dir-test', 'first.md'))} ${chalk.magenta('https://hackwildm/article/creating-a-command')} ${chalk.green('200')} ${chalk.bgGreen.black('OK')} ${chalk.yellow('3')}
+${chalk.bgBlue.black(path.join(process.cwd(), 'dir-test', 'first.md'))} ${chalk.magenta('https://hackwildm/article/creating-a-command')} ${chalk.green('ERR')} ${chalk.bgGreen.black('OK')} ${chalk.yellow('3')}
 ${chalk.bgBlue.black(path.join(process.cwd(), 'dir-test', 'first.md'))} ${chalk.magenta('https://medium.com/@josephcardillo/the-difference')} ${chalk.red('404')} ${chalk.bgRed.black('FAIL')} ${chalk.yellow('4')}`;
 
 describe('Command line', () => {
@@ -48,8 +48,8 @@ describe('Command line', () => {
     });
   });
   it('Debería retornar la cantidad de links, la cantidad de links únicos y la cantidad de links rotos', (done) => {
-    cli.showCli({ route: 'dir-test', validate: true, stats: true }).then((response) => {
-      expect(response).toBe(`\n${chalk.cyan('Total: ')} 4 \n${chalk.cyan('Unique: ')} 4 \n${chalk.cyan('Broken: ')} 1`);
+    cli.showCli({ route: 'dir-test/first.md', validate: true, stats: true }).then((response) => {
+      expect(response).toBe(`\n${chalk.cyan('Total: ')} 4 \n${chalk.cyan('Unique: ')} 4 \n${chalk.cyan('Broken: ')} 2`);
       done();
     });
   });
