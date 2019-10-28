@@ -1,4 +1,4 @@
-#!/usr/bin/env node'use sctrict';
+#! / usr / bin / env nodo
 const commander = require('commander');
 
 const cli = require('../src/mdlinks-cli.js');
