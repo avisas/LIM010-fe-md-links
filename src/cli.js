@@ -1,4 +1,4 @@
-#! / usr / bin / env nodo
+#!/usr/bin/env node
 const commander = require('commander');
 
 const cli = require('../src/mdlinks-cli.js');
