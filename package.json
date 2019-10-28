@@ -1,5 +1,5 @@
 {
-  "name": "md-links",
+  "name": "mdlinks",
   "version": "1.0.4",
   "description": "Validate URLs and return Promises",
   "main": "src/md-links.js",
@@ -11,6 +11,7 @@
     "commander": "^3.0.2",
     "eslint-config-airbnb": "^18.0.1",
     "marked": "^0.7.0",
+    "md-links": "git+https://github.com/avisas/LIM010-fe-md-links.git",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
