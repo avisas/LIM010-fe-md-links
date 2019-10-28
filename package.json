@@ -7,11 +7,13 @@
     "test": "test"
   },
   "dependencies": {
+    "acorn": "^7.1.0",
     "chalk": "^2.4.2",
     "commander": "^3.0.2",
     "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "marked": "^0.7.0",
-    "md-links": "git+https://github.com/avisas/LIM010-fe-md-links.git",
+    "mdlinks": "git+https://github.com/avisas/LIM010-fe-md-links.git",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
@@ -29,7 +31,7 @@
     "jest": "^24.9.0"
   },
   "bin": {
-    "md-links": "src/cli.js"
+    "mdlinks": "src/cli.js"
   },
   "scripts": {
     "build": "babel src -d lib",

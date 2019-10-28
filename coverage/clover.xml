@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1572281297539" clover="3.2.0">
-  <project timestamp="1572281297539" name="All files">
+<coverage generated="1572286243599" clover="3.2.0">
+  <project timestamp="1572286243599" name="All files">
     <metrics statements="93" coveredstatements="91" conditionals="39" coveredconditionals="39" methods="26" coveredmethods="25" elements="158" coveredelements="155" complexity="0" loc="93" ncloc="93" packages="1" files="5" classes="5"/>
     <file name="main.js" path="C:\Users\Alejandra\Documents\Laboratoria\LIM010-fe-md-links-ale\src\main.js">
       <metrics statements="42" coveredstatements="41" conditionals="8" coveredconditionals="8" methods="11" coveredmethods="11"/>
