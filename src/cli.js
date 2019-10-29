@@ -10,8 +10,7 @@ program.name('md-links').usage('[options]');
 program.option('--validate', 'Valida todos los links dentro de un archivo MD.');
 program.option('--stats', 'Muestra el total de links y el total de links únicos.');
 // program.parse(process.argv);
-// const [, , route, option1, option2] = process.argv;
-// const options = program.opts();
 const options = cli.readUserArguments(process.argv);
+console.log(process.argv);
 // eslint-disable-next-line no-console
 cli.showCli(options).then((result) => console.log(result)).catch((error) => console.log(error));
