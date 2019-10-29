@@ -41,10 +41,23 @@ const showCli = (options) => {
 
 const readUserArguments = (listOfArgs = []) => {
   const options = { route: '', stats: false, validate: false };
-  if ((Array.isArray(listOfArgs)) && (listOfArgs.length > 2) && (listOfArgs.length <= 5)) {
-    options.route = listOfArgs[2];
-    options.validate = true;
-    options.stats = true;
+  if (Array.isArray(listOfArgs) && (listOfArgs.length >= 3) && (listOfArgs.length <= 5)) {
+    listOfArgs.shift();
+    listOfArgs.shift();
+    listOfArgs.forEach((item) => {
+      switch (item) {
+        case '--stats':
+          options.stats = true;
+          break;
+        case '--validate':
+          options.validate = true;
+          break;
+        default:
+          options.route = item;
+      }
+    });
+  } else {
+    options.error = 'Error: missing or exceeding arguments';
   }
   return options;
 };
