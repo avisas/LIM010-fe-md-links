@@ -48,12 +48,6 @@ Importe **avisas@mdlinks** desde su proyecto.
 const fn = require('avisas@mdlinks');
 ```
 
-Para validación de los links:
-
-( aquí va la validación---- )
-(screenshot)
-
-
 ## CLI (Command Line Interface - Interfaz de Línea de Comando)
 
 **Uso de comandos**
@@ -61,74 +55,11 @@ Para validación de los links:
 md-links <path-to-file> [options]
  
 - El ejecutable implementa `--validate`.
+![--validate](https://user-images.githubusercontent.com/50127415/68601779-0895b300-0473-11ea-8fd3-92f44ec16aca.png)
+
 - El ejecutable implementa `--stats`.
 - El ejecutable implementa `--validate` y `--stats` juntos.
 
-
-### CLI (Command Line Interface - Interfaz de Línea de Comando)
-
-El ejecutable de nuestra aplicación debe poder ejecutarse de la siguiente
-manera a través de la terminal:
-
-`md-links <path-to-file> [options]`
-
-**Por ejemplo:**
-
-```sh
-$ md-links ./some/example.md
-./some/example.md http://algo.com/2/3/ Link a algo
-./some/example.md https://otra-cosa.net/algun-doc.html algún doc
-./some/example.md http://google.com/ Google
-```
-
-Con este comportamiento solo debe identificar el archivo markdown 
-(a partir de la ruta que recibe como argumento), analizar
-el archivo Markdown e imprimir los links que vaya encontrando, 
-junto con la ruta del archivo donde aparece y el texto
-que hay dentro del link (truncado a 50 caracteres).
-
-#### Options
-
-##### comando `--validate`
-
-En esta opción, el módulo debe hacer una petición HTTP para
-averiguar si el link funciona o no. Si el link resulta en una redirección a una
-URL que responde ok, entonces consideraremos el link como ok.
-
-Por ejemplo:
-
-```sh13d99df067c1
-$ md-13d99df067c1
-./some/example.md http://algo.com/2/3/ ok 200 Link a algo
-./some/example.md https://otra-cosa.net/algun-doc.html fail 404 algún doc
-./some/example.md http://google.com/ ok 301 Google
-```
-
-Vemos que el _output_ en este caso incluye la palabra `ok` o `fail` después de
-la URL, así como el status de la respuesta recibida a la petición HTTP a dicha
-URL.
-
-##### comando `--stats`
-
-En esta opción, el output (salida) será un texto con estadísticas
-básicas sobre los links.
-
-```sh
-$ md-links ./some/example.md --stats
-Total: 3
-Unique: 3
-```
-
-##### comando `--stats` `--validate`
-
-En esta opción, se obtienen las estadísticas que necesiten de los resultados de la validación.
-
-```sh
-$ md-links ./some/example.md --stats --validate
-Total: 3
-Unique: 3
-Broken: 1
-```
 - - - 
 
 ## Objetivos de aprendizaje
