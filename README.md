@@ -55,6 +55,7 @@ const fn = require('avisas@mdlinks');
 md-links <path-to-file> [options]
  
 - El ejecutable implementa `--validate`.
+
 ![--validate](https://user-images.githubusercontent.com/50127415/68601779-0895b300-0473-11ea-8fd3-92f44ec16aca.png)
 
 - El ejecutable implementa `--stats`.
@@ -62,6 +63,7 @@ md-links <path-to-file> [options]
 ![--stats](https://user-images.githubusercontent.com/50127415/68602239-fd8f5280-0473-11ea-801d-f1265af54e8b.png)
 
 - El ejecutable implementa `--validate` y `--stats` juntos.
+
 ![--validate --stats](https://user-images.githubusercontent.com/50127415/68602275-0b44d800-0474-11ea-9dd8-ebb003353490.png)
 
 - - - 
